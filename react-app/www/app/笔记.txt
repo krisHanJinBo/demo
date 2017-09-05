@@ -1,0 +1,84 @@
+----------------------react----------------------
+干嘛的：前端框架，把用户界面抽象成一个个的组件，按需组合成页面
+官网：https://reactjs.org/			 en
+	  http://www.react-cn.com/       cn
+	  https://github.com/facebook/react/releases   git
+
+框架受欢迎程度  2017-11-2
+	react  		79988
+	vue			72393
+	angularJs	26445
+	angular     29445
+
+		vue		angularJs	react
+指令	√		√			-
+过滤器	√		√			-
+模板引擎√		√			-
+控制器	-		√			-
+
+共同点：
+	共同点：
+	虚拟DOM，数据驱动,组件式开发		angularJs没有虚拟dom
+
+react:
+	概念：  数据 == 状态 ~~ 组件状态
+
+JSX语法：js + html		类XML语法		XML 数据表 ~~ JSON
+	oo.js/  oo.jsx  合法的
+
+	语法要求：
+		标签要闭合
+		元素必须要有一个顶层元素
+		首字母大写代表组件，小写对应是DOM元素
+
+环境搭建：
+	a)webpack + webpack-dev-server
+
+	b) npm install create-react-app	官方脚手架
+		create-react-app 目录
+		npm start
+
+	c) yeomen 目录		需要安装
+
+	npm install
+	npm run dev
+
+渲染（描画）页面
+ReactDom.render(组件/dom,插入点)
+var ReactDom = require('react-dom');//需要安装+引入
+
+创建组件：	require('react');//需要安装+引入
+	HelloWorld = React.createClass({配置})
+	配置：
+	render:function(){
+		var 变量=数据
+		return html/xml
+		return () 为了排版
+	}
+
+使用组件：
+	<HelloWorld/>
+	<HelloWorld></HelloWorld>
+组件嵌套：
+	在父组件的return html里面,使用<子组件/>
+
+
+组件属性(props)：	props在于数据的传递，state在于当前组件的状态。
+	<组件名 属性名=值 属性名2=值2 .. />	传递属性
+	组件内部：{this.props.属性名}   使用属性
+			  this 代表的是组件本身
+
+	值类型：字符||{表达式/arr/json/undefined/number/fn}
+	this.props.属性名==array 需要循环
+	arr值：this.props.属性名.map(function(){
+		return html
+	})
+	json {json} 报错， 对象无法直接通过{obj}展示->{obj.key}
+
+组件之间数据传递(props传递)
+	父到子	props 传递 <Child 属性=状态数据>
+
+组件状态state：(多个组件嵌套，状态最好给顶层组件,子组件只有props)
+	初始状态：getInitialState:function(){return {数据名状态名:值}}
+	读取状态：this.state.数据名
+	修改状态：this.setState({数据名:新值})
